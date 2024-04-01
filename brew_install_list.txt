@@ -1,0 +1,10 @@
+neovim
+git
+jq
+curl
+wget2
+awscli
+pyenv
+tmux
+gh
+tree
