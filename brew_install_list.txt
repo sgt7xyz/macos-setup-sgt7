@@ -8,3 +8,4 @@ pyenv
 tmux
 gh
 tree
+eksctl
