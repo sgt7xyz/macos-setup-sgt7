@@ -9,3 +9,4 @@ tmux
 gh
 tree
 eksctl
+glow
