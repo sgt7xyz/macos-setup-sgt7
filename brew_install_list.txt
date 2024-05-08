@@ -1,6 +1,7 @@
 vim
 git
 jq
+yq
 curl
 wget2
 awscli
