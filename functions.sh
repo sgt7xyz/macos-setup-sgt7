@@ -98,3 +98,14 @@ install_asdf() {
     source $zshrc_file
     echo 'asdf installed successfully.'
 }
+
+# 9. Configure git
+configure_git() {
+    cp configs/.gitignore_global ~/
+    git config --global init.defaultBranch main
+    git config --global color.ui auto
+    git config --global core.editor vim
+    git config --global pull.rebase false
+    git config --global core.excludesfile ~/.gitignore_global
+    echo 'Base configuration for Git completed. Ensure you set your username and email!'
+}

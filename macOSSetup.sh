@@ -14,7 +14,8 @@ while true; do
     echo '6. Download and install Droid SansM Nerd Font'
     echo '7. Install Oh My Zsh and Powerlevel10k'
     echo '8. Install asdf'
-    echo '9. Execute All'
+    echo '9. Configure git'
+    echo '10. Execute All'
     echo '0. Exit'
     echo -n 'Enter the number of your choice: '
     read choice
@@ -52,7 +53,10 @@ while true; do
             install_asdf
             ;;
 
-        9)
+        9)  configure_git
+            ;;
+
+        10)
             update_patch_mac
             rename_mac
             install_xcode_clt
@@ -61,6 +65,7 @@ while true; do
             download_install_font
             install_oh_my_zsh_powerlevel10k
             install_asdf
+            configure_git
             ;;    
 
         0)
