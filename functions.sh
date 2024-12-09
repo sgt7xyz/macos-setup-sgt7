@@ -93,7 +93,7 @@ install_asdf() {
     else
             brew install coreutils curl git
     fi
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
     sed -i .bak 's|plugins=(git)|plugins=(git asdf)|g' $zshrc_file
     source $zshrc_file
     echo 'asdf installed successfully.'

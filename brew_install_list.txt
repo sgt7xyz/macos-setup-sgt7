@@ -10,5 +10,7 @@ tmux
 gh
 tree
 eksctl
+kubectl
+k9s
 glow
 floorp
