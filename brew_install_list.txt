@@ -7,10 +7,16 @@ wget2
 awscli
 pyenv
 tmux
+fd
 gh
 tree
 eksctl
 kubectl
 k9s
 glow
+ripgrep
 floorp
+tcpdump
+ssldump
+nmap
+netcat 
