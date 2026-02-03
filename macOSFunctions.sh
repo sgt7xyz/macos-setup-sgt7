@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+SIP_DISABLED=false
+
 # 1. Update and patch your mac
 update_patch_mac() {
   echo "Updating and patching Mac..."  
@@ -34,7 +36,48 @@ install_xcode_clt () {
     echo 'Xcode Command Line Tools installed successfully.'
 }
 
-# 4. Function to install Homebrew
+# 4. Function to check System Integrity Protection (SIP) status
+check_sip_status() {
+    echo "Checking System Integrity Protection (SIP) status..."
+    if ! csrutil status | grep -q "enabled"; then
+        echo "SIP is disabled."
+        SIP_DISABLED=true
+    else
+        echo "SIP is enabled."
+        SIP_DISABLED=false # Ensure it's set to false if enabled
+    fi
+}
+
+# 5. Enable Firewall
+enable_firewall() {
+    echo "Enabling firewall and firewall stealth mode..."
+    sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+    sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+    echo "Firewall enabled."
+}
+
+# 6. Disable auto-allow for built-in and downloaded software
+disable_auto_allow() {
+    echo "Disabling auto-allow for built-in and downloaded software..."
+    sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
+    sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
+    echo "Auto-allow disabled."
+}
+
+# Function to display SIP warning on exit if needed
+display_sip_warning_if_needed() {
+    if [ "$SIP_DISABLED" = true ]; then
+        echo
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "WARNING: System Integrity Protection (SIP) is currently disabled."
+        echo "For improved security, it is highly recommended to enable it."
+        echo "To enable SIP, reboot into Recovery Mode and run the following command:"
+        echo "    csrutil enable && reboot"
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    fi
+}
+
+# 7. Function to install Homebrew
 install_homebrew() {
     local user_ack=${1:-}
     echo 'Installing Homebrew...'
@@ -47,7 +90,7 @@ install_homebrew() {
     fi
 }
 
-# 5. Function to install Homebrew packages
+# 8. Function to install Homebrew packages
 install_homebrew_packages() {
     echo 'Installing homebrew packages...'
     local app_list="brew_install_list.txt"
@@ -63,7 +106,7 @@ install_homebrew_packages() {
     echo 'Homebrew pacakges installed successfully.'
 }
 
-# 6. Function to install mise
+# 9. Function to install mise
 install_mise() {
     local user_ack=${1:-}
     local zshrc_file="$HOME/.zshrc"
@@ -81,7 +124,15 @@ install_mise() {
     fi
 }
 
-# 7. Function to download and install Droid SansM Nerd Font
+# 10. Configure faster key repeat
+configure_key_repeat() {
+    echo "Configuring faster key repeat..."
+    defaults write -g KeyRepeat -int 1
+    defaults write -g InitialKeyRepeat -int 15
+    echo "Faster key repeat configured."
+}
+
+# 11. Function to download and install Droid SansM Nerd Font
 download_install_font() {
     local font_dir="./fonttmp"
     local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/DroidSansMono.zip"
@@ -98,7 +149,7 @@ download_install_font() {
     echo 'Fonts installed successfully. Ensure you select the font in your terminal etc.'
 }
 
-# 8. Function to install Oh My Zsh and Powerlevel10k
+# 12. Function to install Oh My Zsh and Powerlevel10k
 install_oh_my_zsh_powerlevel10k() {
     local user_ack=${1:-}
     local zshrc_file="$HOME/.zshrc"
@@ -116,7 +167,7 @@ install_oh_my_zsh_powerlevel10k() {
     fi
 }
 
-# 9. Configure git
+# 13. Configure git
 configure_git() {
     cp configs/.gitignore_global ~/
     git config --global init.defaultBranch main
