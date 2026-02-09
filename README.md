@@ -92,9 +92,3 @@ Internet Recovery has been removed. To boot into Recovery mode follow the below 
 - Vagrant
   brew install hashicorp/tap/hashicorp-vagrant
   brew install vagrant-vmware-utility
-
-**ASDF Plugins and Packages**
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
-asdf plugin-add packer https://github.com/asdf-community/asdf-hashicorp.git
-asdf global terraform latest
-asdf global packer latest

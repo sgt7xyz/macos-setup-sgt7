@@ -103,7 +103,7 @@ install_homebrew_packages() {
         echo "Installing ${app}..."
         brew install "$app"
         done < "$app_list"
-    echo 'Homebrew pacakges installed successfully.'
+    echo 'Homebrew packages installed successfully.'
 }
 
 # 9. Function to install mise
