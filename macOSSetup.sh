@@ -2,6 +2,7 @@
 
 declare script_dir="$(realpath $(dirname -- "$0"))"
 source $script_dir/macOSFunctions.sh
+NETWORK_SCRIPT="$script_dir/macOSNetwork.sh"
 
 # --- Global Variables ---
 log_file="setup_log_$(date +'%Y-%m-%d_%H-%M-%S').log"
@@ -35,13 +36,16 @@ while true; do
     echo '8. Install Homebrew Packages'
     echo '9. Install mise'
     echo
-    echo '  Environment Setup:'
-    echo '10. Configure faster key repeat'
-    echo '11. Download and install Droid SansM Nerd Font'
-    echo '12. Install Oh My Zsh and Powerlevel10k'
-    echo '13. Configure git'
+    echo '  Network:'
+    echo '10. Configure DNS (macOS Network Utility)'
     echo
-    echo '14. Execute All'
+    echo '  Environment Setup:'
+    echo '11. Configure faster key repeat'
+    echo '12. Download and install Droid SansM Nerd Font'
+    echo '13. Install Oh My Zsh and Powerlevel10k'
+    echo '14. Configure git'
+    echo
+    echo '15. Execute All'
     echo '0. Exit'
     echo
     echo -n 'Enter the number of your choice: '
@@ -92,28 +96,37 @@ while true; do
             log_execution "install_mise"
             install_mise
             ;;
-        
+
         10)
+            log_execution "macOSNetwork"
+            if [[ -x "$NETWORK_SCRIPT" ]]; then
+                sudo zsh "$NETWORK_SCRIPT"
+            else
+                echo "Error: $NETWORK_SCRIPT not found or not executable."
+            fi
+            ;;
+
+        11)
             log_execution "configure_key_repeat"
             configure_key_repeat
             ;;
-            
-        11)
+
+        12)
             log_execution "download_install_font"
             download_install_font
             ;;
-            
-        12)
+
+        13)
             log_execution "install_oh_my_zsh_powerlevel10k"
             install_oh_my_zsh_powerlevel10k
             ;;
 
-        13)
+        14)
             log_execution "configure_git"
             configure_git
             ;;
 
-        14)
+        15)
             log_execution "Execute All"
             echo "The 'Execute All' option includes steps that execute scripts from the internet via 'curl | sh'."
             echo "This can be a security risk."
@@ -144,6 +157,10 @@ while true; do
             install_homebrew_packages
             log_execution "install_mise"
             install_mise "$user_ack_unsafe"
+            log_execution "macOSNetwork"
+            if [[ -x "$NETWORK_SCRIPT" ]]; then
+                sudo zsh "$NETWORK_SCRIPT"
+            fi
             log_execution "configure_key_repeat"
             configure_key_repeat
             log_execution "download_install_font"
