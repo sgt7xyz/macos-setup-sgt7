@@ -59,42 +59,33 @@ Internet Recovery has been removed. To boot into Recovery mode follow the below 
 
 - On a clean install of macOS, Spotlight is the easiest way to open terminal. Press Command (or Cmd) ⌘ + Space Bar. When presnted with a dialig start to type Terminal and when presented with a match press Enter.
 
+## 4. Manual Software Installation
+
 **The Following Apps I Install manually by package or the App Store. You can install many of them by Homebrew, but it's a personal preference.**
 
+> **Security Best Practices for Manual Installs**
+>
+> - **Download from official sources only.** Always use the developer's official website or the Mac App Store.
+> - **Verify file hashes.** Many developers publish SHA-256 checksums alongside their downloads. After downloading, verify the hash in Terminal:
+>   ```bash
+>   shasum -a 256 /path/to/downloaded-file
+>   ```
+>   Compare the output to the hash listed on the developer's download page.
+> - **Scan binaries with antimalware software.** Upload installers and binaries to [VirusTotal](https://www.virustotal.com/) before running them. VirusTotal scans files against dozens of antivirus engines and provides a detailed report.
+> - **Check code signatures.** Verify that the downloaded application is properly signed by the developer:
+>   ```bash
+>   codesign -dv --verbose=2 /path/to/Application.app
+>   ```
+
 - [Signal](https://signal.org/download/)
-
-**Chrome**
-
-**VScode**
-
-**Microsoft Remote Desktop**
-
-**1Password**
-
-**Floorp**
-
-**VLC Player**
-
-**Acrobat Reader**
-
-**VNC Viewer**
-
-**Draw.io**
-
-**rectangle**
-
-**Manually Installed with Homebrew**
-
-- brew install --cask google-cloud-sdk
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-- Vagrant
-  brew install hashicorp/tap/hashicorp-vagrant
-  brew install vagrant-vmware-utility
-
-**ASDF Plugins and Packages**
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
-asdf plugin-add packer https://github.com/asdf-community/asdf-hashicorp.git
-asdf global terraform latest
-asdf global packer latest
+- [Chrome](https://www.google.com/chrome/)
+- [VSCode](https://code.visualstudio.com/Download)
+- [Microsoft Remote Desktop](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466)
+- [1Password](https://1password.com/downloads)
+- [Floorp](https://floorp.app/download/)
+- [VLC Player](https://www.videolan.org/vlc/)
+- [Acrobat Reader](https://get.adobe.com/reader/)
+- [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)
+- [Draw.io](https://www.drawio.com/)
+- [Rectangle](https://rectangleapp.com/)
+- [Caffeine](https://intelliscapesolutions.com/apps/caffeine)
