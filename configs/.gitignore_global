@@ -227,6 +227,42 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# --- AI & LLM Tools ---
+
+# Claude (Anthropic)
+.claude/
+claude_history/
+
+# ChatGPT / OpenAI 
+# (Common for unofficial CLI tools or local logging)
+.chatgpt/
+.openai/
+chatgpt_history.json
+.gpt-pilot/
+
+# Google Gemini / Vertex AI
+.gemini/
+.vertexai/
+
+# Perplexity & Other Search/Research AI
+.perplexity/
+perplexity_results/
+
+# General AI/LLM metadata and local caches
+.llm/
+.ai_history/
+.cursor/
+.aider*
+.continuation/
+.idx/
+
+# Local Vector Databases & Embeddings
+# (If you are using local RAG or indexing tools)
+.chroma/
+.pinecone/
+.faiss/
+storage.sqlite
+
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
