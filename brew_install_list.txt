@@ -9,9 +9,7 @@ git
 glow
 gpg
 gnupg
-jq
 k9s
-kubectl
 netcat
 neovim
 nmap
@@ -22,4 +20,3 @@ tcpdump
 tmux
 tree
 wget2
-yq
