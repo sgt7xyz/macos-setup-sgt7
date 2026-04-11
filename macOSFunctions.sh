@@ -124,7 +124,23 @@ install_mise() {
     fi
 }
 
-# 10. Configure faster key repeat
+# 10. Function to install mise packages
+install_mise_packages() {
+    echo 'Installing mise packages...'
+    local pkg_list="mise_install_list.txt"
+    if ! command -v mise &> /dev/null; then
+        echo "mise not installed. Please install mise first."
+        return 1
+    fi
+
+    while IFS= read -r pkg || [[ -n "$pkg" ]]; do
+        echo "Installing ${pkg}..."
+        mise use --global "${pkg}@latest"
+    done < "$pkg_list"
+    echo 'mise packages installed successfully.'
+}
+
+# 11. Configure faster key repeat
 configure_key_repeat() {
     echo "Configuring faster key repeat..."
     defaults write -g KeyRepeat -int 1
@@ -132,7 +148,7 @@ configure_key_repeat() {
     echo "Faster key repeat configured."
 }
 
-# 11. Function to download and install Droid SansM Nerd Font
+# 12. Function to download and install Droid SansM Nerd Font
 download_install_font() {
     local font_dir="./fonttmp"
     local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/DroidSansMono.zip"
@@ -149,7 +165,7 @@ download_install_font() {
     echo 'Fonts installed successfully. Ensure you select the font in your terminal etc.'
 }
 
-# 12. Function to install Oh My Zsh and Powerlevel10k
+# 13. Function to install Oh My Zsh and Powerlevel10k
 install_oh_my_zsh_powerlevel10k() {
     local user_ack=${1:-}
     local zshrc_file="$HOME/.zshrc"
@@ -167,7 +183,7 @@ install_oh_my_zsh_powerlevel10k() {
     fi
 }
 
-# 13. Configure git
+# 14. Configure git
 configure_git() {
     cp configs/.gitignore_global ~/
     git config --global init.defaultBranch main

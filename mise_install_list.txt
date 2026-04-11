@@ -1,0 +1,16 @@
+awscli
+bat
+eksctl
+fd
+gh
+glow
+helm
+jq
+k9s
+kubectl
+neovim
+ripgrep
+terraform
+tmux
+trivy
+yq

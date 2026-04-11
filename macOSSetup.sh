@@ -35,17 +35,18 @@ while true; do
     echo '7. Install Homebrew'
     echo '8. Install Homebrew Packages'
     echo '9. Install mise'
+    echo '10. Install mise Packages'
     echo
     echo '  Network:'
-    echo '10. Configure DNS (macOS Network Utility)'
+    echo '11. Configure DNS (macOS Network Utility)'
     echo
     echo '  Environment Setup:'
-    echo '11. Configure faster key repeat'
-    echo '12. Download and install Droid SansM Nerd Font'
-    echo '13. Install Oh My Zsh and Powerlevel10k'
-    echo '14. Configure git'
+    echo '12. Configure faster key repeat'
+    echo '13. Download and install Droid SansM Nerd Font'
+    echo '14. Install Oh My Zsh and Powerlevel10k'
+    echo '15. Configure git'
     echo
-    echo '15. Execute All'
+    echo '16. Execute All'
     echo '0. Exit'
     echo
     echo -n 'Enter the number of your choice: '
@@ -98,6 +99,11 @@ while true; do
             ;;
 
         10)
+            log_execution "install_mise_packages"
+            install_mise_packages
+            ;;
+
+        11)
             log_execution "macOSNetwork"
             if [[ -x "$NETWORK_SCRIPT" ]]; then
                 sudo zsh "$NETWORK_SCRIPT"
@@ -106,27 +112,27 @@ while true; do
             fi
             ;;
 
-        11)
+        12)
             log_execution "configure_key_repeat"
             configure_key_repeat
             ;;
 
-        12)
+        13)
             log_execution "download_install_font"
             download_install_font
             ;;
 
-        13)
+        14)
             log_execution "install_oh_my_zsh_powerlevel10k"
             install_oh_my_zsh_powerlevel10k
             ;;
 
-        14)
+        15)
             log_execution "configure_git"
             configure_git
             ;;
 
-        15)
+        16)
             log_execution "Execute All"
             echo "The 'Execute All' option includes steps that execute scripts from the internet via 'curl | sh'."
             echo "This can be a security risk."
@@ -157,6 +163,8 @@ while true; do
             install_homebrew_packages
             log_execution "install_mise"
             install_mise "$user_ack_unsafe"
+            log_execution "install_mise_packages"
+            install_mise_packages
             log_execution "macOSNetwork"
             if [[ -x "$NETWORK_SCRIPT" ]]; then
                 sudo zsh "$NETWORK_SCRIPT"
