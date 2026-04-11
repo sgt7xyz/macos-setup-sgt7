@@ -135,6 +135,7 @@ install_mise_packages() {
 
     while IFS= read -r pkg || [[ -n "$pkg" ]]; do
         echo "Installing ${pkg}..."
+        mise install "${pkg}@latest"
         mise use --global "${pkg}@latest"
     done < "$pkg_list"
     echo 'mise packages installed successfully.'
