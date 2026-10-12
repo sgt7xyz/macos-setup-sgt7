@@ -1,7 +1,9 @@
+coreutils
 curl
 dos2unix
 exiftool
 floorp
+google-cloud-sdk
 git
 gpg
 gnupg

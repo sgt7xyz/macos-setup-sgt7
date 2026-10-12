@@ -4,9 +4,9 @@ awscli
 bat
 claude
 codex
+cosign
 eksctl
 fd
-gcloud
 gemini
 gh
 glow
