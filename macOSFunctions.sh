@@ -103,6 +103,11 @@ install_homebrew_packages() {
         echo "Installing ${app}..."
         brew install "$app"
         done < "$app_list"
+
+    if command -v gcloud &> /dev/null; then
+        echo 'Installing gke-gcloud-auth-plugin...'
+        gcloud components install gke-gcloud-auth-plugin --quiet
+    fi
     echo 'Homebrew packages installed successfully.'
 }
 
