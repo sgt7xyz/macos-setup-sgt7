@@ -11,8 +11,8 @@ vim.cmd.colorscheme("catppuccin-macchiato")
 -- Line numbers
 vim.opt.number = true
 
--- EditorConfig support (native, no plugin needed in Neovim 0.9+)
-vim.opt.editorconfig = true
+-- Load editorconfig plugin if available
+vim.g.editorconfig = true
 
 -- Status line
 vim.opt.laststatus = 2
