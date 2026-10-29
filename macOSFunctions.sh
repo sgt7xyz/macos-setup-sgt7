@@ -200,6 +200,31 @@ configure_git() {
     echo 'Base configuration for Git completed. Ensure you set your username and email!'
 }
 
+# 15. Configure application themes
+configure_themes() {
+    echo "Configuring application themes..."
+
+    # Create neovim config directory
+    local nvim_config_dir="$HOME/.config/nvim"
+    mkdir -p "$nvim_config_dir"
+
+    # Copy neovim init.lua configuration (includes vim.pack.add for catppuccin)
+    if [[ -f "$script_dir/configs/nvim/init.lua" ]]; then
+        cp "$script_dir/configs/nvim/init.lua" "$nvim_config_dir/init.lua"
+        echo "Neovim configuration installed."
+    else
+        echo "Warning: Neovim config file not found at $script_dir/configs/nvim/init.lua"
+    fi
+
+    # Copy .editorconfig to home directory
+    if [[ -f "$script_dir/configs/.editorconfig" ]]; then
+        cp "$script_dir/configs/.editorconfig" "$HOME/.editorconfig"
+        echo "EditorConfig installed to home directory."
+    fi
+
+    echo "Theme configuration completed."
+}
+
 # Helper function to prompt the user about security risks of curl | sh
 prompt_for_security_risk() {
     local cmd_to_run=$1

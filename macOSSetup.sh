@@ -45,8 +45,9 @@ while true; do
     echo '13. Download and install Droid SansM Nerd Font'
     echo '14. Install Oh My Zsh and Powerlevel10k'
     echo '15. Configure git'
+    echo '16. Configure application themes (Catppuccin Macchiato)'
     echo
-    echo '16. Execute All'
+    echo '17. Execute All'
     echo '0. Exit'
     echo
     echo -n 'Enter the number of your choice: '
@@ -133,6 +134,11 @@ while true; do
             ;;
 
         16)
+            log_execution "configure_themes"
+            configure_themes
+            ;;
+
+        17)
             log_execution "Execute All"
             echo "The 'Execute All' option includes steps that execute scripts from the internet via 'curl | sh'."
             echo "This can be a security risk."
@@ -177,6 +183,8 @@ while true; do
             install_oh_my_zsh_powerlevel10k "$user_ack_unsafe"
             log_execution "configure_git"
             configure_git
+            log_execution "configure_themes"
+            configure_themes
             ;;
 
         0)
